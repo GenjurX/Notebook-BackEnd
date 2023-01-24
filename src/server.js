@@ -6,6 +6,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//route for searching your notes
+app.get("/api/search/:searchValue", async (req, res) => {
+    const searchValue = req.params.searchValue;
+    const result = await database.raw(`select * from notes where title like '%${searchValue}%' or category like '%${searchValue}%' or description like '%${searchValue}%' or date like '%${searchValue}%'`);
+    res.status(200);
+    res.json(result);
+});
+
 //create a new note
 app.post("/api/notes", async (req, res)=> {
     const {title, category, date, description} = req.body;
