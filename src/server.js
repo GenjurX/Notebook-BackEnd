@@ -23,6 +23,14 @@ app.get("/api/notes", async (req, res) => {
     res.json(result);
 });
 
+//get one single note
+app.get("/api/notes/:id", async (req, res) => {
+    const id = req.params.id;
+    const result = await database.raw(`select * from notes where id='${id}'`);
+    res.status(200);
+    res.json(result);
+});
+
 //update note
 app.put("/api/note/:id", async (req, res) =>{
     const id = req.params.id;
