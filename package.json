@@ -2,10 +2,9 @@
   "name": "notebook-backend",
   "version": "1.0.0",
   "description": "",
-  //"main": "./src/server.js",
   "type": "module",
   "scripts": {
-     "start": "node ./src/server.js",//to be updated
+     "start": "node ./src/server.js",
     "dev": "node --watch ./src/server.js"
   },
   "repository": {
